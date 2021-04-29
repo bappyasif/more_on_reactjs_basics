@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import "./App.css";
 import { AccessingProps } from "./components/class_based/AccessingProps";
+import { ContainerForConditionalRendering } from "./components/class_based/conditional_rendering/ContainerForConditionalRendering";
 import { ExampleComponent } from "./components/class_based/ExampleComponent";
+import { ContainerForHandlingEvents } from "./components/class_based/handling_events/ContainerForHandlingEvents";
 import { StateUsage } from "./components/class_based/StateUsage";
+import { StateAndLifecycleContainer } from "./components/class_based/state_lifecycles/StateAndLifecycleContainer";
 import { ExampleComp } from "./components/function_based/ExampleComp";
 import { ExtractingContainer } from "./components/function_based/extracting_components/ExtractingContainer";
+import { ListsAndKeysContainer } from "./components/function_based/lists_keys/ListsAndKeysContainer";
 
 export default class App extends Component {
   constructor(props) {
@@ -47,6 +51,22 @@ export default class App extends Component {
         {/* using state */}
         {/* values that can be changed over time, are handled using state unlike props these state are mutable by components as it/they needs be */}
         <StateUsage />
+        <hr />
+        
+        {/* using state and lifecycles */}
+        <StateAndLifecycleContainer />
+        <hr />
+
+        {/* handling events */}
+        <ContainerForHandlingEvents />
+        <hr />
+
+        {/* conditional rendering */}
+        <ContainerForConditionalRendering />
+        <hr />
+
+        {/* using lists and keys */}
+        <ListsAndKeysContainer />
       </div>
     );
   }
