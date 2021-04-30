@@ -3,7 +3,9 @@ import "./App.css";
 import { AccessingProps } from "./components/class_based/AccessingProps";
 import { ContainerForConditionalRendering } from "./components/class_based/conditional_rendering/ContainerForConditionalRendering";
 import { ExampleComponent } from "./components/class_based/ExampleComponent";
+import { FormsContainer } from "./components/class_based/forms_workouts/FormsContainer";
 import { ContainerForHandlingEvents } from "./components/class_based/handling_events/ContainerForHandlingEvents";
+import { LiftingUpStateContainer } from "./components/class_based/lifting_up_state_workouts/LiftingUpStateContainer";
 import { StateUsage } from "./components/class_based/StateUsage";
 import { StateAndLifecycleContainer } from "./components/class_based/state_lifecycles/StateAndLifecycleContainer";
 import { ExampleComp } from "./components/function_based/ExampleComp";
@@ -52,7 +54,7 @@ export default class App extends Component {
         {/* values that can be changed over time, are handled using state unlike props these state are mutable by components as it/they needs be */}
         <StateUsage />
         <hr />
-        
+
         {/* using state and lifecycles */}
         <StateAndLifecycleContainer />
         <hr />
@@ -67,6 +69,13 @@ export default class App extends Component {
 
         {/* using lists and keys */}
         <ListsAndKeysContainer />
+        <hr />
+
+        {/* using Forms, controlled component */}
+        <FormsContainer />
+
+        {/* lifting shared state to their shared closest common ancestor */}
+        <LiftingUpStateContainer />
       </div>
     );
   }
