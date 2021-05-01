@@ -8,6 +8,8 @@ import { ContainerForHandlingEvents } from "./components/class_based/handling_ev
 import { LiftingUpStateContainer } from "./components/class_based/lifting_up_state_workouts/LiftingUpStateContainer";
 import { StateUsage } from "./components/class_based/StateUsage";
 import { StateAndLifecycleContainer } from "./components/class_based/state_lifecycles/StateAndLifecycleContainer";
+import { ContainerForThinkingReact } from "./components/class_based/thinking_in_react_context/ContainerForThinkingReact";
+import { ContainerForCompositionInheritence } from "./components/function_based/composition_inheritence/ContainerForCompositionInheritence";
 import { ExampleComp } from "./components/function_based/ExampleComp";
 import { ExtractingContainer } from "./components/function_based/extracting_components/ExtractingContainer";
 import { ListsAndKeysContainer } from "./components/function_based/lists_keys/ListsAndKeysContainer";
@@ -76,6 +78,15 @@ export default class App extends Component {
 
         {/* lifting shared state to their shared closest common ancestor */}
         <LiftingUpStateContainer />
+        <hr />
+
+        {/* using composition over inheritence in react */}
+        <ContainerForCompositionInheritence />
+        <hr />
+
+        {/* thinking in React way */}
+        {/* one of many great aspects of React is how it makes us think about apps as we build them */}
+        <ContainerForThinkingReact />
       </div>
     );
   }
