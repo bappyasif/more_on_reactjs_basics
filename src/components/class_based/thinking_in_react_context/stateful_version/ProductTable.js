@@ -8,6 +8,12 @@ export class ProductTable extends Component {
     let lastCategory = null;
 
     this.props.products.forEach((prod) => {
+      if(prod.name.indexOf(this.props.searchText) === -1) {
+        return
+      }
+      if(this.props.inStock && !prod.stocked) {
+        return
+      }
       if (prod.category !== lastCategory) {
         rows.push(
           <ProductCategoryRow category={prod.category} key={prod.category} />

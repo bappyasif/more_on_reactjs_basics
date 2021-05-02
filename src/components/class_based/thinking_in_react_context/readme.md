@@ -71,4 +71,8 @@ lets rearrage according to their heirarchy in our component tree
         <> common owner component is FilterableProductTable
         <> it conceptually make sense for filter text and checked value to live in FilterableProductTable
     <> now that we decided that FilterableProductTable is common component, lets define things to get those state variable going for rest of our app to use, {filterText: '', inStock: false}, namely to ProductTable and SearchBar as props, in their use these props to filter rows in ProductTable and set values of form fields in SearchBar
-
+<> Adding Inverse Data Flow
+    <> up until previous checkpoint, we built an app that renders corerctly as a function and state flowing down to compoennts hierarchy, lets support data flowing other way, as in Form Component in ProductTable needs to update state in FilterableProductTable
+    <> react makes this data flow explicit to help us understand how our program works, and requires more than just little more typing than traditional two way data-binding
+    <> so, what we want is that whenever user changes form, we update corresponding state to reflect user input, since components should only update their own state, and we'll pass callbacks to SearchBar that will trigger state should be updated in state owned component so that DOM rerender accordingly
+        <> we can use onChange event on inputs to be notified of it, callcaks passed by FilterableProductTable weill call setSate() and app will be updated

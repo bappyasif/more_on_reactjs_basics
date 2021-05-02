@@ -57,6 +57,8 @@ export default class App extends Component {
         <StateUsage />
         <hr />
 
+        {/* react documentation code along */}
+
         {/* using state and lifecycles */}
         <StateAndLifecycleContainer />
         <hr />
@@ -87,6 +89,9 @@ export default class App extends Component {
         {/* thinking in React way */}
         {/* one of many great aspects of React is how it makes us think about apps as we build them */}
         <ContainerForThinkingReact />
+
+        {/* more code along with Props and State */}
+        
       </div>
     );
   }
