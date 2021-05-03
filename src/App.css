@@ -50,6 +50,66 @@
   background: lightcoral;
 }
 
+.testTodo {
+  width: max-content;
+  height: max-content;
+  margin: auto;
+  color: green;
+}
+
+.todo-app-phase-two {
+  display: flex;
+  flex-direction: column;
+  width: 47%;
+  margin: auto;
+  align-items: center;
+  /* border: 1px dotted black; */
+  box-shadow: 
+  /*top layer*/
+  0 2px 2px yellow,
+  /*second layer*/
+  0 11px 0px -4px yellowgreen,
+  /*third layer*/
+  0 11px 0px -11px maroon,
+  /*fourth layer*/
+  0 11px 2px -11px silver,
+  ;
+  /* padding: 11px; */
+}
+
+.todo-item {
+  display: flex;
+  padding: 31px 20px 0;
+  width: 83%;
+  border-bottom: 1px solid silver;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  justify-content: flex-start;
+}
+
+input[type=checkbox] {
+  margin-right: 20px;
+  font-size: 209;
+}
+
+input[type=checkbox]:focus {
+  outline: none;
+}
+
+.joke-item {
+  border: 1px dashed silver;
+  width: max-content;
+  margin: auto;
+  margin-bottom: 1em;
+  background: linear-gradient(to left,white, silver);
+}
+
+.jokes-container {
+  background: linear-gradient(to right, yellow, greenyellow);
+
+}
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
