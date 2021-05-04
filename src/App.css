@@ -57,7 +57,7 @@
   color: green;
 }
 
-.todo-app-phase-two {
+.todo-app-phase-two, .todo-list {
   display: flex;
   flex-direction: column;
   width: 47%;
