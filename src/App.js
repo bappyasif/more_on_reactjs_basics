@@ -13,6 +13,12 @@ import { ClassBasedComponentsDemo } from "./learning_react/ClassBasedComponentsD
 import { ContainerForPhaseFour } from "./learning_react/todo_list_app_phases/phase_four/ContainerForPhaseFour";
 import { ContainerForPhaseFive } from "./learning_react/todo_list_app_phases/phase_five/ContainerForPhaseFive";
 import { ContainerForPhaseSix } from "./learning_react/todo_list_app_phases/phase_six/ContainerForPhaseSix";
+import { LifecycleMethods } from "./learning_react/LifecycleMethods";
+import { ContainerForConditionalRendering } from "./learning_react/conditional_rendering/ContainerForConditionalRendering";
+import { ContainerForPhaseSeven } from "./learning_react/todo_list_app_phases/phase_seven/ContainerForPhaseSeven";
+import { FetchingData } from "./learning_react/FetchingData";
+import { FormsContainer } from "./learning_react/using_forms/FormsContainer";
+
 
 export default class App extends Component {
   constructor(props) {
@@ -70,6 +76,16 @@ export default class App extends Component {
         <ContainerForPhaseFive />
         <p>Todo List Phase Six</p>
         <ContainerForPhaseSix />
+        <hr />
+        <LifecycleMethods />
+        <hr />
+        <ContainerForConditionalRendering />
+        <hr />
+        <ContainerForPhaseSeven />
+        <hr />
+        <FetchingData />
+        <hr />
+        <FormsContainer />
       </div>
     );
   }
