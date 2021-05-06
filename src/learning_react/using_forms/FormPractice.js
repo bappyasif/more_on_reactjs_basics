@@ -15,6 +15,10 @@ export class FormPractice extends Component {
         isKosher: false,
         lactoseFree: false,
       },
+      isVegan: false,
+      nonVegan: false,
+      isKosher: false,
+      lactoseFree: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,29 +30,52 @@ export class FormPractice extends Component {
   //       [name]: valuePassing,
   //     });
   //   }
+
   handleChange(evt) {
     let { name, value, type, checked } = evt.target;
     type === "checkbox"
       ? this.setState({
-          dietary_restrictions: {
-            [name]: checked,
-          },
+          [name]: checked,
         })
       : this.setState({
           [name]: value,
         });
   }
+
+  // handleChange(evt) {
+  //   let { name, value, type, checked } = evt.target;
+  //   type === "checkbox"
+  //     ? this.setState((prevState) => ({
+  //         dietary_restrictions: {
+  //           ...prevState.dietary_restrictions,
+  //           [name]: checked,
+  //         },
+  //       }))
+  //     : this.setState({
+  //         [name]: value,
+  //       });
+  // }
   handleSubmit(evt) {
     evt.preventDefault();
-    alert(
+    alert([
       this.state.firstName,
       this.state.lastName,
       this.state.gender,
       this.state.location,
-      this.state.dietary_restrictions
-    );
+      this.state.isVegan,
+      this.state.nonVegan,
+      this.state.isKosher,
+      this.state.lactoseFree,
+    ]);
   }
   render() {
+    // let restrictions;
+    // if(this.state.isVegan) {
+    //   restrictions += "Vegan"+this.state.isVegan
+    // } else if(this.state.nonVegan) {
+    //   restrictions += "NonVegan"+this.state.nonVegan;
+    // }
+
     return (
       <div>
         <fieldset>
@@ -74,6 +101,9 @@ export class FormPractice extends Component {
               onChange={this.handleChange}
             />
 
+            <p />
+            <label>Gender: </label>
+
             <input
               type="radio"
               name="gender"
@@ -91,7 +121,7 @@ export class FormPractice extends Component {
               onChange={this.handleChange}
             />
             <label>male</label>
-
+            <p />
             <label>
               travelling to :
               <select
@@ -99,55 +129,113 @@ export class FormPractice extends Component {
                 onChange={this.handleChange}
                 value={this.state.location}
               >
+                <option value="">please choose a destination</option>
                 <option value="europe">europe</option>
                 <option value="africa">africa</option>
                 <option value="asia">asia pacific</option>
               </select>
             </label>
+            <p />
+            <label>dietary restrictions if any :</label>
+            <p />
             <label>
-              dietary restrictions if any :<label>vegetarian:</label>
+              vegetarian:
               <input
                 type="checkbox"
                 // name="dietary_restrictions"
                 name="isVegan"
-                checked={this.state.dietary_restrictions.isVegan}
+                checked={this.state.isVegan}
+                // checked={this.state.dietary_restrictions.isVegan}
                 // value="vegetarian"
-                value={this.state.dietary_restrictions.isVegan}
-                onChange={this.handleChange}
-              />
-              <label>non-vegetarian</label>
-              <input
-                type="checkbox"
-                // name="dietary_restrictions"
-                name="nonVegan"
-                checked={this.state.dietary_restrictions.nonVegan}
-                // value="non-vegetarian"
-                value={this.state.dietary_restrictions.nonVegan}
-                onChange={this.handleChange}
-              />
-              <label>kosher</label>
-              <input
-                type="checkbox"
-                // name="dietary_restrictions"
-                name="isKosher"
-                checked={this.state.dietary_restrictions.isKosher}
-                // value="kosher"
-                value={this.state.dietary_restrictions.isKosher}
-                onChange={this.handleChange}
-              />
-              <label>lactose-free</label>
-              <input
-                type="checkbox"
-                // name="dietary_restrictions"
-                name="lactoseFree"
-                checked={this.state.dietary_restrictions.lactoseFree}
-                // value="lactose-free"
-                value={this.state.dietary_restrictions.lactoseFree}
+                // value={this.state.dietary_restrictions.isVegan}
                 onChange={this.handleChange}
               />
             </label>
+            <label>non-vegetarian</label>
+            <input
+              type="checkbox"
+              // name="dietary_restrictions"
+              name="nonVegan"
+              checked={this.state.nonVegan}
+              // checked={this.state.dietary_restrictions.nonVegan}
+              // value="non-vegetarian"
+              // value={this.state.dietary_restrictions.nonVegan}
+              onChange={this.handleChange}
+            />
+            <label>kosher</label>
+            <input
+              type="checkbox"
+              // name="dietary_restrictions"
+              name="isKosher"
+              checked={this.state.isKosher}
+              // checked={this.state.dietary_restrictions.isKosher}
+              // value="kosher"
+              // value={this.state.dietary_restrictions.isKosher}
+              onChange={this.handleChange}
+            />
+            <label>lactose-free</label>
+            <input
+              type="checkbox"
+              // name="dietary_restrictions"
+              name="lactoseFree"
+              checked={this.state.lactoseFree}
+              // checked={this.state.dietary_restrictions.lactoseFree}
+              // value="lactose-free"
+              // value={this.state.dietary_restrictions.lactoseFree}
+              onChange={this.handleChange}
+            />
+
             <button type="submit">submit</button>
           </form>
+        </fieldset>
+        <fieldset>
+          <h4>Form Output</h4>
+          <p>firstName : {this.state.firstName}</p>
+          <p>lastName : {this.state.lastName}</p>
+          <p>age : {this.state.age}</p>
+          <p>gender : {this.state.gender}</p>
+          <p>destination : {this.state.location}</p>
+          <p>
+            dietary_restrictions:{" "}
+            {/* {this.state.isVegan
+              ? "Vegan : " + this.state.isVegan
+              : this.state.nonVegan
+              ? "NonVegan : " + this.state.nonVegan
+              : ""} */}
+
+            {/* {restrictions} */}
+
+            <p>
+              {this.state.isVegan ? "Vegan : "+this.state.isVegan+", " : ""}
+              {this.state.nonVegan ? "NonVegan : "+this.state.nonVegan+", " : ""}
+              {this.state.isKosher ? "Kosher : "+this.state.isKosher+", " : ""}
+              {this.state.lactoseFree ? "LactoseFree : "+this.state.lactoseFree+", " : ""}
+            </p>
+          </p>
+          <p>
+            dietary_restrictions: kosher :{" "}
+            {/* {this.state.dietary_restrictions.isKosher} */}
+            {/* {this.state.isKosher} */}
+            {this.state.isKosher ? "Yes" : "No"}
+          </p>
+          <p>
+            dietary_restrictions: vegan :{" "}
+            {/* {this.state.dietary_restrictions.isVegan} */}
+            {/* {this.state.isVegan} */}
+            {this.state.isVegan ? "Yes" : "No"}
+          </p>
+          <p>
+            dietary_restrictions: nonVegan :{" "}
+            {/* {this.state.dietary_restrictions.nonVegan} */}
+            {/* {this.state.nonVegan} */}
+            {this.state.nonVegan ? "Yes" : "No"}
+          </p>
+          <p>
+            dietary_restrictions: lactoseFree :{" "}
+            {/* {this.state.dietary_restrictions.lactoseFree} */}
+            {/* {this.state.lactoseFree} */}
+            {this.state.lactoseFree ? "Yes" : "No"}
+          </p>
         </fieldset>
       </div>
     );

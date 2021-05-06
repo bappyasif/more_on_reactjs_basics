@@ -18,6 +18,7 @@ import { ContainerForConditionalRendering } from "./learning_react/conditional_r
 import { ContainerForPhaseSeven } from "./learning_react/todo_list_app_phases/phase_seven/ContainerForPhaseSeven";
 import { FetchingData } from "./learning_react/FetchingData";
 import { FormsContainer } from "./learning_react/using_forms/FormsContainer";
+import { ContainerForMemeGenerator } from "./learning_react/meme_generator/ContainerForMemeGenerator";
 
 
 export default class App extends Component {
@@ -86,6 +87,9 @@ export default class App extends Component {
         <FetchingData />
         <hr />
         <FormsContainer />
+        <hr />
+        <p>Meme Generator</p>
+        <ContainerForMemeGenerator />
       </div>
     );
   }

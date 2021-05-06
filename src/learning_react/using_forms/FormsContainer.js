@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { FormPractice } from "./FormPractice";
+import { FormPracticeVersionTwo } from "./FormPracticeVersionTwo";
+import { FormVersionThreeContainer } from "./FormVersionThreeContainer";
 
 export class FormsContainer extends Component {
   constructor() {
@@ -131,6 +133,10 @@ export class FormsContainer extends Component {
         </form>
         <br />
         <FormPractice />
+        {/* separation of concerns exist */}
+        <FormPracticeVersionTwo />
+        {/* separation of concern with perhaps over simplification, and kind of manifesting need of use Context API */}
+        <FormVersionThreeContainer />
       </div>
     );
   }
