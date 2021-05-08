@@ -4,6 +4,8 @@ import { PrevWorkouts } from "./PrevWorkouts";
 import { RecentCodeAlongWorkouts } from "./RecentCodeAlongWorkouts";
 import randomcolor from "randomcolor";
 import { AssignmentContainer } from "./diy_assignment/AssignmentContainer";
+import { AssignmentContainerVersionTwo } from "./diy_assignment/version_two/AssignmentContainer";
+import { ContainerForOptionalTasks } from "./diy_assignment/optional_tasks/ContainerForOptionalTasks";
 
 export default class App extends Component {
   constructor(props) {
@@ -54,6 +56,14 @@ export default class App extends Component {
 
         {/* do-it-yourself assignment */}
         <AssignmentContainer />
+        <hr />
+
+        {/* do-it-yourself-assignment-version-two */}
+        <AssignmentContainerVersionTwo />
+        <hr />
+
+        {/* do-it-yourself-assignment-optional-tasks */}
+        <ContainerForOptionalTasks />
       </div>
     );
   }
