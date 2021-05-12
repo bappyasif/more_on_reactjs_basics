@@ -6,6 +6,7 @@ import randomcolor from "randomcolor";
 import { AssignmentContainer } from "./diy_assignment/AssignmentContainer";
 import { AssignmentContainerVersionTwo } from "./diy_assignment/version_two/AssignmentContainer";
 import { ContainerForOptionalTasks } from "./diy_assignment/optional_tasks/ContainerForOptionalTasks";
+import { ContainerForLifecycleMethods } from "./lifecycle_methods/ContainerForLifecycleMethods";
 
 export default class App extends Component {
   constructor(props) {
@@ -64,6 +65,10 @@ export default class App extends Component {
 
         {/* do-it-yourself-assignment-optional-tasks */}
         <ContainerForOptionalTasks />
+        <hr />
+
+        {/* lifecycle methods */}
+        <ContainerForLifecycleMethods />
       </div>
     );
   }
