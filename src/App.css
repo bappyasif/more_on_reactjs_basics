@@ -109,6 +109,22 @@ input[type=checkbox]:focus {
 
 }
 
+.wrapper {
+  width: 85%;
+  max-width: 960px;
+  margin: 0;
+  position: relative;
+}
+
+.Grid {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.grid-item {
+  background-color: silver;
+  width: 155px;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
