@@ -8,6 +8,7 @@ import { AssignmentContainerVersionTwo } from "./diy_assignment/version_two/Assi
 import { ContainerForOptionalTasks } from "./diy_assignment/optional_tasks/ContainerForOptionalTasks";
 import { ContainerForLifecycleMethods } from "./lifecycle_methods/ContainerForLifecycleMethods";
 import { ContainerForMasonryLayout } from "./lifecycle_methods/masonry_layout/ContainerForMasonryLayout";
+import { HooksContainer } from "./about_hooks/HooksContainer";
 
 export default class App extends Component {
   constructor(props) {
@@ -72,6 +73,10 @@ export default class App extends Component {
         <ContainerForLifecycleMethods />
         <hr />
         <ContainerForMasonryLayout />
+        <hr />
+
+        {/* using hooks */}
+        <HooksContainer />
       </div>
     );
   }
