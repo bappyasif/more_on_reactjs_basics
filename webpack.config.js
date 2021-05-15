@@ -11,7 +11,7 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "./src"),
     // contentBase: path.join(__dirname, "./dist"),
-    hot: true
+    hot: true,
   },
   module: {
     rules: [
@@ -19,23 +19,26 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-            loader: "babel-loader"
-        }
+          loader: "babel-loader",
+        },
       },
       {
         test: /\.css/,
-        use: ["style-loader", "css-loader"]
+        use: ["style-loader", "css-loader"],
         // use: {
         //   loader: ["style-loader", "css-loader"]
         // }
-      }
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "./src/index.html"),
       title: "React App Boilerplate Code With Webpack",
-      favicon: "./src/logo.svg"
+      favicon: "./src/logo.svg",
     }),
+    // [["@babel/plugin-proposal-class-properties", { loose: true }]],
+    // [["@babel/plugin-proposal-class-properties"]],
   ],
+  // plugins: [["@babel/plugin-proposal-class-properties", { loose: true }]]
 };
