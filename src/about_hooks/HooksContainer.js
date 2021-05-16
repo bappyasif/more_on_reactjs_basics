@@ -3,6 +3,8 @@ import { ClockClass } from './ClockClass'
 import { ClockHooks } from './ClockHooks'
 import { CounterHooks } from './CounterHooks'
 import { HooksAtAGlance } from './just_hooks/HooksAtAGlance'
+import { EffectHook } from './just_hooks/using_useState/EffectHook'
+import { StateHook } from './just_hooks/using_useState/StateHook'
 import { UsageOfUseState } from './UsageOfUseState'
 
 export class HooksContainer extends Component {
@@ -22,6 +24,12 @@ export class HooksContainer extends Component {
                 
                 {/* hooks docs code along */}
                 <HooksAtAGlance />
+
+                {/* State Hook */}
+                <StateHook />
+
+                {/* Effect Hook */}
+                <EffectHook />
             </div>
         )
     }
