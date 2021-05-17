@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { ClockClass } from './ClockClass'
 import { ClockHooks } from './ClockHooks'
 import { CounterHooks } from './CounterHooks'
+import { CustomHooks } from './just_hooks/custom_hooks/CutomHooks'
 import { HooksAtAGlance } from './just_hooks/HooksAtAGlance'
+import { ContainerForHooksReference } from './just_hooks/hooks_references/ContainerForHooksReference'
 import { EffectHook } from './just_hooks/using_useState/EffectHook'
 import { StateHook } from './just_hooks/using_useState/StateHook'
 import { UsageOfUseState } from './UsageOfUseState'
@@ -30,6 +32,12 @@ export class HooksContainer extends Component {
 
                 {/* Effect Hook */}
                 <EffectHook />
+
+                {/* Custom Hook */}
+                <CustomHooks />
+
+                {/* Additional Hooks */}
+                <ContainerForHooksReference />
             </div>
         )
     }
