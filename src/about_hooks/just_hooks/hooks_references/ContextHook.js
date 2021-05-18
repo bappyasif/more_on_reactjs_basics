@@ -18,6 +18,8 @@ let themes = {
   },
 };
 
+// please make sure createContext structures stays trues throughout Provider and Consumer
+// how we define it in createContext will determine how both Provider and Consumer will expect from this context that we just created
 let ThemeContext = React.createContext(themes.light);
 
 export function ContextHook() {
