@@ -1,6 +1,7 @@
 import React from 'react'
 import { ContextHook } from './ContextHook'
 import { ContextHookVersionTwo } from './ContextHookVersionTwo'
+import { LamentsTerm } from './LamentsTerm'
 import { TextInputWithFocus } from './TextInputWithFocus'
 import { CounterExample } from './using_reducer/CounterExample'
 import { CounterExampleVersionTwo } from './using_reducer/CounterExampleVersionTwo'
@@ -41,6 +42,9 @@ export function ContainerForHooksReference() {
             <br />
             {/* useRef hook */}
             <TextInputWithFocus />
+            <hr />
+            {/* hooks documentations revisited in laments term */}
+            <LamentsTerm />
         </div>
     )
 }
