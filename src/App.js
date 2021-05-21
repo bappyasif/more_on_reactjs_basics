@@ -9,6 +9,8 @@ import { ContainerForOptionalTasks } from "./diy_assignment/optional_tasks/Conta
 import { ContainerForLifecycleMethods } from "./lifecycle_methods/ContainerForLifecycleMethods";
 import { ContainerForMasonryLayout } from "./lifecycle_methods/masonry_layout/ContainerForMasonryLayout";
 import { HooksContainer } from "./about_hooks/HooksContainer";
+import { StarWarsCharactersInfo } from "./about_hooks/example_app_using_hooks/StarWarsCharactersInfo";
+import {StarWarsCharactersInfoWithCustomHooks} from "./about_hooks/example_app_using_hooks/StarWarsCharactersInfoWithCustomHooks";
 
 export default class App extends Component {
   constructor(props) {
@@ -77,6 +79,10 @@ export default class App extends Component {
 
         {/* using hooks */}
         <HooksContainer />
+
+        {/* starwars character info example app using hooks and functional components */}
+        <StarWarsCharactersInfo />
+        <StarWarsCharactersInfoWithCustomHooks />
       </div>
     );
   }
