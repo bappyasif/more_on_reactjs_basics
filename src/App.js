@@ -3,14 +3,8 @@ import "./App.css";
 import { PrevWorkouts } from "./PrevWorkouts";
 import { RecentCodeAlongWorkouts } from "./RecentCodeAlongWorkouts";
 import randomcolor from "randomcolor";
-import { AssignmentContainer } from "./diy_assignment/AssignmentContainer";
-import { AssignmentContainerVersionTwo } from "./diy_assignment/version_two/AssignmentContainer";
-import { ContainerForOptionalTasks } from "./diy_assignment/optional_tasks/ContainerForOptionalTasks";
-import { ContainerForLifecycleMethods } from "./lifecycle_methods/ContainerForLifecycleMethods";
-import { ContainerForMasonryLayout } from "./lifecycle_methods/masonry_layout/ContainerForMasonryLayout";
-import { HooksContainer } from "./about_hooks/HooksContainer";
-import { StarWarsCharactersInfo } from "./about_hooks/example_app_using_hooks/StarWarsCharactersInfo";
-import {StarWarsCharactersInfoWithCustomHooks} from "./about_hooks/example_app_using_hooks/StarWarsCharactersInfoWithCustomHooks";
+import { HooksAndRecentWorkouts } from "../HooksAndRecentWorkouts";
+import { RoutersContainer } from "./about_routers/RoutersContainer";
 
 export default class App extends Component {
   constructor(props) {
@@ -18,12 +12,14 @@ export default class App extends Component {
     this.state = {
       show: false,
       show2: false,
+      show3: false,
     };
 
     // binding on click handler, so that it stays in this context whenever a child component triggers it
     // we have to do this same 'this' binding within a class component before passing them around in any child or other components
     this.onButtonClickedHandler = this.onButtonClickedHandler.bind(this);
     this.clickedHandler = this.clickedHandler.bind(this);
+    this.clickedHandler3 = this.clickedHandler3.bind(this);
   }
 
   //   onButtonClickedHandler = () => console.log("Button Clicked");
@@ -43,6 +39,14 @@ export default class App extends Component {
     });
   }
 
+  clickedHandler3(show) {
+    // console.log(show)
+    this.setState({
+      // show: !this.state.show,
+      show3: !show,
+    });
+  }
+
   // when working with a React App it's always better start with smaller component and work our way up to top of App View hierarchy
 
   render() {
@@ -59,30 +63,14 @@ export default class App extends Component {
           clickHandler={this.clickedHandler}
         />
 
-        {/* do-it-yourself assignment */}
-        <AssignmentContainer />
-        <hr />
+        {/* more on stateful components using class and mostly Hooks */}
+        <HooksAndRecentWorkouts
+          show={this.state.show3}
+          clickHandler={this.clickedHandler3}
+        />
 
-        {/* do-it-yourself-assignment-version-two */}
-        <AssignmentContainerVersionTwo />
-        <hr />
-
-        {/* do-it-yourself-assignment-optional-tasks */}
-        <ContainerForOptionalTasks />
-        <hr />
-
-        {/* lifecycle methods */}
-        <ContainerForLifecycleMethods />
-        <hr />
-        <ContainerForMasonryLayout />
-        <hr />
-
-        {/* using hooks */}
-        <HooksContainer />
-
-        {/* starwars character info example app using hooks and functional components */}
-        <StarWarsCharactersInfo />
-        <StarWarsCharactersInfoWithCustomHooks />
+        {/* react routers */}
+        <RoutersContainer />
       </div>
     );
   }

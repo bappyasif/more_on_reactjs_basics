@@ -12,6 +12,8 @@ module.exports = {
     contentBase: path.join(__dirname, "./src"),
     // contentBase: path.join(__dirname, "./dist"),
     hot: true,
+    // make histopry api to true, so that router can have access to all routes url
+    historyApiFallback: true,
   },
   module: {
     rules: [
