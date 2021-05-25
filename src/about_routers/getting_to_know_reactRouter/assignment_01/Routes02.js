@@ -7,12 +7,16 @@ import {Topics} from "./Topics";
 
 // using nav for routes
 export function Routes02() {
+  // anytime we need to enforce a specefic navigation, we can use Redirect, when Redirect renders, it will navigate using its "to" prop
   return (
     <div>
+      {/* BrowserRouter uses regular URL paths, these are generally best looking urls, but they require to be configuired in server as well to serve correctly */}
+      {/* HashRouter stores current location, in hash portion of URL, so since hash is never sent to server so no further configuartion is needed */}
       <BrowserRouter>
         <nav>
           {/* <ul> */}
             <li>
+              {/* Link will create an "a" tag, whwre as NavLink will create same but with styling className when it's active */}
               <Link to="/">Home02</Link>
             </li>
             <li>

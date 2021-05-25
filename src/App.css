@@ -126,6 +126,24 @@ input[type=checkbox]:focus {
   width: 155px;
 }
 
+.routeNav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 11vh;
+  background-color: silver;
+  color: whitesmoke;
+}
+
+.nav-links {
+  color: aqua;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 40%;
+  list-style: circle;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
