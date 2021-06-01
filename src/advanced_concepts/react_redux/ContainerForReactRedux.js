@@ -19,6 +19,9 @@ import { NewCakeHooksContainer } from "./combined_reducers/NewCakeHooksContainer
 import { NewIcecreamHooksContainer } from "./combined_reducers/NewIcecreamHooksContainer";
 import PropsAndStateContainer from "./combined_reducers/StateAndDispatchTogether";
 import PropsAndDispatchItem from "./combined_reducers/SoloDispatchAnItem";
+import  UserContainer  from "./async_actions/UserContainer";
+import {userStore} from "./async_actions/Store"
+import SoloContainer from "./async_actions/SoloContainer";
 
 export function ContainerForReactRedux() {
   return (
@@ -57,6 +60,11 @@ export function ContainerForReactRedux() {
           <p>just dispatching without states</p>
           <PropsAndDispatchItem />
           <PropsAndDispatchItem cake />
+          {/* async usage */}
+          <UserContainer />
+      </Provider>
+      <Provider store={userStore}>
+        <SoloContainer />
       </Provider>
     </div>
   );

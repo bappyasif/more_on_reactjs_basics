@@ -1,4 +1,5 @@
 import React from 'react'
+import { HigherOrderComponentsContainer } from './higherOrder_components/HigherOrderComponentsContainer'
 import { ProptypesContainer } from './prop_types/ProptypesContainer'
 import { ContainerForReactRedux } from './react_redux/ContainerForReactRedux'
 import { ContainerForStyledComponents } from './styled_components/ContainerForStyledComponents'
@@ -12,6 +13,8 @@ export function ContainerForAdvancedConcepts() {
             <ContainerForStyledComponents />
             {/* <ReduxContainer /> */}
             <ContainerForReactRedux />
+            {/* <HigherOrderComponentsContainer /> */}
+            
         </div>
     )
 }
