@@ -13,7 +13,7 @@ function SoloContainer({ userData, fetchUsers }) {
   ) : (
     userData &&
     userData.users &&
-    userData.users.map((user) => <p>{user.id}</p>)
+    userData.users.map((user) => <p key={user.name}>{user.id}</p>)
   );
 }
 

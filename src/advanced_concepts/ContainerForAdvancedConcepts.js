@@ -3,6 +3,7 @@ import { HigherOrderComponentsContainer } from './higherOrder_components/HigherO
 import { ProptypesContainer } from './prop_types/ProptypesContainer'
 import { ContainerForReactRedux } from './react_redux/ContainerForReactRedux'
 import { ContainerForStyledComponents } from './styled_components/ContainerForStyledComponents'
+import { HooksContainer } from './using_hooks/HooksContainer'
 import { ReduxContainer } from './using_redux/ReduxContainer'
 
 export function ContainerForAdvancedConcepts() {
@@ -13,8 +14,8 @@ export function ContainerForAdvancedConcepts() {
             <ContainerForStyledComponents />
             {/* <ReduxContainer /> */}
             <ContainerForReactRedux />
-            {/* <HigherOrderComponentsContainer /> */}
-            
+            <HigherOrderComponentsContainer />
+            <HooksContainer />            
         </div>
     )
 }
