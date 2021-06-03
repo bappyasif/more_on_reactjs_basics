@@ -4,7 +4,8 @@
   "description": "react app with webpoack boilerplate code for create react app look, attempted atleast",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "watch": "jest --watch ./jest_codes/*.js",
     "build": "webpack",
     "start": "webpack serve --open"
   },
@@ -40,6 +41,7 @@
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.4",
     "html-webpack-plugin": "^5.3.1",
+    "jest": "^27.0.4",
     "redux-logger": "^3.0.6",
     "style-loader": "^2.0.0",
     "webpack": "^5.36.0",
