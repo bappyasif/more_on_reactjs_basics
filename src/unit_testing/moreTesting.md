@@ -75,5 +75,74 @@ how pure functions reduce tight coupling:
 tightly coupling examples: class inheritance, gloabal variables, other mutable global state, mosule import with side effcts, implicit dependencies from compositions, dependency injection containers/parameters, control/mutable parameters
 loosely coupling examples: module imports without side effcts, message passing / pubsub, immutable parameters
 where tightly coupled codes are encouraged to be avoided, loosely coupled codes are preferred in healthy application,  generaly more often
-to remove coupling we can make use of, pure functions, isolate side effects e.g. no mixing of logics with i/o, network, ui, logging etc, and removal of dependent logic, so that they can become declarative compositions which font need their own unit tests, as in if there is no logic ther is no need for to unit test
+to remove coupling we can make use of, pure functions, isolate side effects e.g. no mixing of logics with i/o, network, ui, logging etc, and removal of dependent logic, so that they can become declarative compositions which dont need their own unit tests, as in if there is no logic ther is no need for to unit test
 which means for our networks requenst, event handlers wont need unit test but rather integration tests for those instead, where it's perfectly okay to mock and fake for integration tests.
+lets look at those ways of removal tight coupling in much more depths:
+<> use of pure functions: 
+pure functions cany directly mutate global variables, arguments passed into them, netwoirk, disk or screen, all they can do is return a value
+when we're passed an array or object and we want to return a changed version of that object, we cant just directly make changes to object and return it, we'll have to make a new copy of it with required changes and then return it
+let's have a look at this following snippet examplifying pure vs impure fuinctions
+<!-- 
+// impure version
+let signInUser = user => user.isSignedIn = true;
+let foo = {name: 'foo', isSignedIn: false}
+console.log(signInUser(foo), foo); // foo was mutated with signInUser(foo) call
+ -->
+ <!-- 
+ // pure version
+ let singInUser = user => {...user, user.isSignedIn: true}
+ let foo = {name: 'foo', isSignedIn: false}
+ console.log(signInUser(foo), foo); // foo wasn not mutated, so they both have those values intact and unmodified
+  -->
+by returning a new object each time gives us an opportunity to check identity comparison, and not have to traverse through entire object to discover if anything has changed or not
+pure functions can also be memoized, meaning that we dont have to build whole object again for same inputs that have been used before, this way we can optimize expensive or not, processes
+as they have no side effects, its safe to distribute among cluster of processors for complex computations, mutations isn't always faster, and it is often order of magnitude slower because it takes a a micro optimization at expense of macro optimizations.
+<> isolate side effects from rest of program logic: there are several ways of doing that, here are some of them:
+use of pub/sub to decouple i/o from views and program logic, rather than directly triggering side effects in ui views or program logic, emit or dispatch an event or action describing an event or intent.
+isolate logic from i/o rather compose functions which return promises
+use of objects that represents future computations rather that direct triggering of computation with i/o, which are eas y to unit test with no mocking required
+-- use pub/sub: 
+pub/sub is short for publish/subscribe pattern, in this pattern units dont directly call each other rather they publish messages to other units (subscribers) can listen to, both pubs and subs doesnt know if any units call that other units
+pub/sub is also baked into redux where we create a global model for application state, called store, instead directly manipulating models, views, and i/o handlers dispatch's action objects to store, which has a special key 'type' which various reducers can listen for and responds to, this way, our views and state logics can stay independently unaware of how views and states are handled
+-- isolate logic from i/o:
+sometimes we can use compositions like promises to elimiante dependent logic from our own compositions, for ecample this following function contain logic that can't unit test without mocking all of it's async functions:
+<!-- 
+let log = (...args) => console.log(args);
+// in real code we'd have imported real things
+let readUser = () => Promise.resolve(true);
+let getFolderInfo = () => Promise.resolve(true);
+let haveWriteAccess = () => Promise.resolve(true);
+let uploadToFolder = () => Promise.resolve('success!!');
+// some gibberish starting variables
+let user = '1234';
+let folder = 'folder456';
+let files = ['a','b','c','d'];
+async function uploadFiles({user, folder, files}) {
+    let dbUser = await readUser({user});
+    let folderInfo = await getFolderInfo({folder});
+    let isWriteAccessValid = await haveWriteAccess({dbUser, folderInfo});
+    if(isWriteAccessValid) {
+        return uploadFiles({dbUser, folderInfo, files});
+    } else {
+        throw new Error('no write access available');
+    }
+}
+uploadFiles({user, folder, files}).then(log);
+ -->
+ <!-- 
+ // now refactoring it using promise composition via asyncPipe()
+ let asyncPipe = (...fns) => x => (fns.reduce(async (y, f) => f(await y), x));
+ let uploadFiles = asyncPipe(readUser, getFolderInfo, haveWriteAccess, uploadToFolder);
+ uploadFiles({user, folder, files}).then(log);
+  -->
+conditional logic is easily removed because promises have conditional branching built in, idea is taht logic and i/o doesn't mix well, so we want to remove logic from i/o dependent code
+to do so, we need to ensure these two things:
+>> haveWriteAccess() wil reject if user doesn't have write access, that moves conditional logic into promise context so we dont have to unit test it or worry about it all, as promises are already have their own tests baked into js engine core
+>> each of these functions takes and resolves with same data type, we could create pipelineData type fr this composition which is just an object containing these keys {user, folder, files, dbUser?, folderInfo?}, this creates a structure sharing dependency between components, but we can use more generic versions of these functions in other places and specialize them for this pipeline with thin wrapping functions.
+with those conditions met, its trivial to test wach of these functions in isolation from each other without mocking other functions, since we've extracted all of logic out of pipeline, there's nothing meaningful unit test, all there is left is integration tests, thing to remember, logic and i/o are separate concerns, and logic is thinking, effects are actions.
+-- use objects that represent future computations:
+using generators and representations of computations in our unbit tests, we can simulate everything up to but excluding invoking any  real side effects, we can pass values into .next() calls to fake responses or throw errors at iterator to fake errors and promise rejections, using this style there is no need to mock anything in unit tests, even for complex integrations workflows with lots of side effects.
+-- code smells are warnings not laws, mocks are not evil: mock is great for integration tests: 
+because integration tests test collaborative integrations of units, it's perfectly alright to fake servers, network protocols, network messages and so on in order to reproduce all various conditions we'll encounter during communication between units
+there are lots of useful testing tools that throttle network bandwidth, introduce network lag, produce network error, and otherwise test lots of other conditions that are impossible to test using unit tests which mock away communication layer
+its impossible to acheive 100% test coverage without integration tests, even if we manage to acheive 100% unit test coverage, sometimes 100% is not always 100%
