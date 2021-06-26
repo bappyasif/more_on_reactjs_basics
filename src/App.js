@@ -6,6 +6,7 @@ import randomcolor from "randomcolor";
 import { HooksAndRecentWorkouts } from "../HooksAndRecentWorkouts";
 import { RoutersContainer } from "./about_routers/RoutersContainer";
 import { ContainerForAdvancedConcepts } from "./advanced_concepts/ContainerForAdvancedConcepts";
+import {ContainerForReactIntroductions} from "./react_introductions/ContainerForReactIntroductions";
 
 export default class App extends Component {
   constructor(props) {
@@ -14,7 +15,8 @@ export default class App extends Component {
       show: false,
       show2: false,
       show3: false,
-      show4: false
+      show4: false,
+      show5: false
     };
 
     // binding on click handler, so that it stays in this context whenever a child component triggers it
@@ -23,6 +25,7 @@ export default class App extends Component {
     this.clickedHandler = this.clickedHandler.bind(this);
     this.clickedHandler3 = this.clickedHandler3.bind(this);
     this.clickedHandler4 = this.clickedHandler4.bind(this);
+    this.clickedHandler5 = this.clickedHandler5.bind(this);
   }
 
   //   onButtonClickedHandler = () => console.log("Button Clicked");
@@ -58,6 +61,14 @@ export default class App extends Component {
     });
   }
 
+  clickedHandler5(show) {
+    // console.log(show)
+    this.setState({
+      // show: !this.state.show,
+      show5: show,
+    });
+  }
+
   // when working with a React App it's always better start with smaller component and work our way up to top of App View hierarchy
 
   render() {
@@ -84,7 +95,10 @@ export default class App extends Component {
         <RoutersContainer show={this.state.show4} clickHandler={this.clickedHandler4} />
 
         {/* advanced concepts about reactJs */}
-        <ContainerForAdvancedConcepts />
+        <ContainerForAdvancedConcepts show={this.state.show5} clickHandler={this.clickedHandler5} />
+
+        {/* react introductions */}
+        <ContainerForReactIntroductions />
       </div>
     );
   }
